@@ -1,17 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+    <button class="btn btn-primary" @click="show()">
+      show
+    </button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import {store} from './store/store.js'
 
 export default {
   name: 'App',
+
   components: {
-    HelloWorld
+
+  },
+
+  data: function(){
+    return {
+      store:store,
+      list:null
+    }
+  },
+
+  methods: {
+    show(){
+      this.list = this.store.state.list;
+      console.log(this.list.errors);
+    }
+  },
+  mounted() {
+    this.store.commit('getList');
   }
 }
 </script>

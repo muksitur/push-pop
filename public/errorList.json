@@ -1,16 +1,16 @@
 {
   "errors":[
-    {"index":0, "code":123, "text":"error number 1", "type":"resolved"},
-    {"index":1, "code":456, "text":"error number 2", "type":"unresolved"},
-    {"index":2, "code":789, "text":"error number 3", "type":"backlog"},
-    {"index":3, "code":123, "text":"error number 1", "type":"resolved"},
-    {"index":4, "code":456, "text":"error number 2", "type":"unresolved"},
-    {"index":5, "code":789, "text":"error number 3", "type":"backlog"},
-    {"index":6, "code":123, "text":"error number 1", "type":"resolved"},
-    {"index":7, "code":456, "text":"error number 2", "type":"unresolved"},
-    {"index":8, "code":789, "text":"error number 3", "type":"backlog"},
-    {"index":8, "code":123, "text":"error number 1", "type":"resolved"},
-    {"index":10, "code":456, "text":"error number 2", "type":"unresolved"},
-    {"index":11, "code":789, "text":"error number 3", "type":"backlog"}
+    {"index":1, "code":123, "text":"error number 1", "type":"resolved"},
+    {"index":2, "code":456, "text":"error number 2", "type":"unresolved"},
+    {"index":3, "code":789, "text":"error number 3", "type":"backlog"},
+    {"index":4, "code":123, "text":"error number 1", "type":"resolved"},
+    {"index":5, "code":456, "text":"error number 2", "type":"unresolved"},
+    {"index":6, "code":789, "text":"error number 3", "type":"backlog"},
+    {"index":7, "code":123, "text":"error number 1", "type":"resolved"},
+    {"index":8, "code":456, "text":"error number 2", "type":"unresolved"},
+    {"index":9, "code":789, "text":"error number 3", "type":"backlog"},
+    {"index":10, "code":123, "text":"error number 1", "type":"resolved"},
+    {"index":11, "code":456, "text":"error number 2", "type":"unresolved"},
+    {"index":12, "code":789, "text":"error number 3", "type":"backlog"}
   ]
 }

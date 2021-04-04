@@ -12,5 +12,19 @@
     {"index":10, "code":123, "text":"error number 1", "type":"resolved"},
     {"index":11, "code":456, "text":"error number 2", "type":"unresolved"},
     {"index":12, "code":789, "text":"error number 3", "type":"backlog"}
+  ],
+  "messages":[
+    {"index":1, "text":"Message number 1. This is the rest of the message."},
+    {"index":2, "text":"Message number 2. This is the rest of the message."},
+    {"index":3, "text":"Message number 3. This is the rest of the message."},
+    {"index":4, "text":"Message number 4. This is the rest of the message."},
+    {"index":5, "text":"Message number 5. This is the rest of the message."},
+    {"index":6, "text":"Message number 6. This is the rest of the message."},
+    {"index":7, "text":"Message number 7. This is the rest of the message."},
+    {"index":8, "text":"Message number 8. This is the rest of the message."},
+    {"index":9, "text":"Message number 9. This is the rest of the message."},
+    {"index":10, "text":"Message number 10. This is the rest of the message."},
+    {"index":11, "text":"Message number 11. This is the rest of the message."},
+    {"index":12, "text":"Message number 12. This is the rest of the message."}
   ]
 }

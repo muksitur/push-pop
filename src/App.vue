@@ -60,7 +60,7 @@
     </div>
 
     <div class="" @click="closeSideNav()">
-      <div class="btn-group btn-group-toggle mb-5 row col-12" data-toggle="buttons">
+      <div class="btn-group btn-group-toggle mb-5 row col-12" data-toggle="buttons" style="z-index:0;">
         <label v-for="(operator, i) in store.state.operators" class="btn btn-secondary mr-2 col-5 mb-2" @click="chooseOperator(i)">
           <input type="radio" name="options" :id="operator+'operator.index'" autocomplete="off">{{operator.name}}
         </label>

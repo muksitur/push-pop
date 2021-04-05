@@ -5,7 +5,7 @@
       <nav class="row rounded" style="background-color:white;">
         <div class="">
           <button v-if="store.state.notification.length!==0" @click="openSideNav()" class="btn" style="background-color:white; height: 30px; margin-bottom:5px;">
-            <i class="fa fa-comments fa-2x" aria-hidden="true"></i>
+            <i class="fa fa-comments fa-2x" aria-hidden="true" style="margin-top:-5px;"></i>
           </button>
         </div>
         <div class="col-11 row justify-content-center">
@@ -18,7 +18,7 @@
       <header class="row justify-content-between container" style="width:275px; margin-right:0px; height:35px; position:fixed; top:0px; background-color:white; z-index:2">
         <span class="row col-12 justify-content-center" style="color:#4E4E4E; height:30px; font-weight: 600; font-size: 19px;">Notification</span>
         <button @click="closeSideNav()" class="btn col-1" style="background-color:white; height:30px; margin-bottom:5px;">
-          <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+          <i class="fa fa-bars fa-2x" aria-hidden="true" style="margin-top:-5px; margin-left:-5px;"></i>
         </button>
       </header>
       <ul id="myUL" class="list-group list-unstyled" style="padding-bottom:40px; padding-top:30px;">
@@ -60,6 +60,11 @@
     </div>
 
     <div class="" @click="closeSideNav()">
+      <div class="btn-group btn-group-toggle mb-5 row col-12" data-toggle="buttons">
+        <label v-for="(operator, i) in store.state.operators" class="btn btn-secondary mr-2 col-5 mb-2" @click="chooseOperator(i)">
+          <input type="radio" name="options" :id="operator+'operator.index'" autocomplete="off">{{operator.name}}
+        </label>
+      </div>
       <div class="card mb-5">
         <div class="card-header">
           <button @click="collapseResolved('resolvedCollapseIcon')" style="color: #323232; font-weight: 600;" class="btn btn-block" type="button" data-toggle="collapse" data-target="#resolved" aria-expanded="false" aria-controls="">
@@ -110,7 +115,7 @@
       </div>
 
 
-      <div class="card">
+      <div class="card mb-5">
         <div class="card-header">
           <button @click="collapseUnresolved('unresolvedCollapseIcon')" style="color: #323232; font-weight: 600;" class="btn btn-block" type="button" data-toggle="collapse" data-target="#unresolved" aria-expanded="false" aria-controls="">
             <div class="row">
@@ -229,11 +234,19 @@ export default {
       resolvedClicked:false,
       unresolvedClicked:false,
       backlogClicked:false,
+      operatorIndex:null,
       notification:[]
     }
   },
 
   methods: {
+    chooseOperator(index){
+      this.operatorIndex = index;
+      if(Number.isNaN(Number(this.store.state.operatorRequestCount[this.operatorIndex])) === true){
+        this.store.state.operatorRequestCount[this.operatorIndex] = 0;
+      }
+
+    },
     openSideNav(){
       document.getElementById("mySidenav").style.left = "0px";
       this.notification = this.store.state.notification;
@@ -247,18 +260,34 @@ export default {
       $('#'+modalId).modal('hide');
     },
     backlogToUnresolved(element, modalId){
+      this.store.state.requestCount++;
+      if(this.operatorIndex!==null){
+        this.store.state.operatorRequestCount[this.operatorIndex]++;
+      }
       this.store.state.unresolved.push(element);
       const index = this.store.state.backlog.indexOf(element);
       this.store.state.backlog.splice(index, 1);
       $('#'+modalId).modal('hide');
     },
     unresolvedToResolved(element, modalId){
+      if(Number.isNaN(Number(this.store.state.resolvedCount[element.code])) === true){
+        this.store.state.resolvedCount[element.code] = 0;
+      }
+      this.store.state.resolvedCount[element.code]++;
+      this.store.state.requestCount++;
+      if(this.operatorIndex!==null){
+        this.store.state.operatorRequestCount[this.operatorIndex]++;
+      }
       this.store.state.resolved.push(element);
       const index = this.store.state.unresolved.indexOf(element);
       this.store.state.unresolved.splice(index, 1);
       $('#'+modalId).modal('hide');
     },
     resolvedToUnresolved(element, modalId){
+      this.store.state.requestCount++;
+      if(this.operatorIndex!==null){
+        this.store.state.operatorRequestCount[this.operatorIndex]++;
+      }
       this.store.state.unresolved.push(element);
       const index = this.store.state.resolved.indexOf(element);
       this.store.state.resolved.splice(index, 1);

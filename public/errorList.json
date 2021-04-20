@@ -32,5 +32,17 @@
     {"index":2,"name":"Captain America"},
     {"index":3,"name":"Doctor Strange"},
     {"index":4,"name":"Lex Luthor"}
-  ]
+  ],
+  "element":{
+    "type":"CollapsibleList",
+    "columns":["Code","Error"],
+    "content":{
+      "item":"forEach", "datapoint":"resolved",
+      "rowContent":[
+        {"element":"Code", "position":1},
+        {"element":"Error", "position":2, "label":"resolved.text"},
+        {"element":"ActionButton", "position":2, "text":"Unresolve"}
+      ]
+    }
+  }
 }
